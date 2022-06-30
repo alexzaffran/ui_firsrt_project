@@ -1,0 +1,57 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-6 box">
+        <h1 class="title">ADD NEW SHIFT</h1>
+        <div class="field">
+          <p class="control">
+            <input class="input shiftDate" type="text" placeholder="Date" />
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <input
+              class="input shiftStartTime"
+              type="text"
+              placeholder="Start Time"
+            />
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <input
+              class="input shiftEndTime"
+              type="text"
+              placeholder="EndTime"
+            />
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <input
+              class="input employeeId"
+              type="text"
+              placeholder="Employee Id"
+            />
+          </p>
+          <p class="help is-danger is-hidden error-message">
+            There was an error
+          </p>
+          <p class="help is-success is-hidden success-message">
+            The shift was created successfully
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <button
+              class="button is-info add-new-shift-button"
+              onclick="handleAddNewShiftButton()"
+            >
+              ADD
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,60 @@
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-6 box">
+        <h1 class="title">UPDATE EMPLOYEE</h1>
+        <div class="field">
+          <label class="label">First Name</label>
+          <p class="control">
+            <input
+              class="input firstNameEmployee"
+              type="text"
+              placeholder="First Name"
+            />
+          </p>
+        </div>
+        <div class="field">
+          <label class="label">Name</label>
+          <p class="control">
+            <input class="input nameEmployee" type="text" placeholder="Name" />
+          </p>
+        </div>
+        <div class="field">
+          <label class="label">Start Work Year</label>
+          <p class="control">
+            <input
+              class="input startWorkYear"
+              type="text"
+              placeholder="Start Work Year"
+            />
+          </p>
+        </div>
+        <div class="field">
+          <label class="label">Department Id</label>
+          <p class="control">
+            <div class="select">
+              <select class="departmentId">
+              </select>
+            </div>
+          </p>
+          <p class="help is-danger is-hidden error-message">
+            There was an error
+          </p>
+          <p class="help is-success is-hidden success-message">
+            The shift was created successfully
+          </p>
+        </div>
+        <div class="field">
+          <p class="control">
+            <button
+              class="button is-info update-employee-button"
+              onclick="handleUpdateEmployee()"
+            >
+              UPDATE
+            </button>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../styles/home.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/departments.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/employees.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/shifts.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@6.6.96/css/materialdesignicons.min.css"
+    />
+  </head>
+  <script src="../scripts/isOnline.js"></script>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a
+          role="button"
+          class="navbar-burger is-active"
+          aria-label="menu"
+          aria-expanded="false"
+          data-target="navbarBasicExample"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu is-active">
+        <div class="navbar-start">
+          <a class="navbar-item is-uppercase" onclick="load_page('employees')">
+            Employees
+          </a>
+          <a
+            class="navbar-item is-uppercase"
+            onclick="load_page('departments')"
+          >
+            Departments
+          </a>
+          <a class="navbar-item is-uppercase" onclick="load_page('shifts')">
+            Shifts
+          </a>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item hello-user has-text-weight-bold"></div>
+          <div class="navbar-item">
+            <div class="buttons">
+              <a
+                class="button is-danger is-uppercase"
+                href="./login.html"
+                onclick="handleLogout()"
+              >
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div id="content"></div>
+    <script src="../scripts/home.js"></script>
+    <script src="../scripts/departments.js"></script>
+    <script src="../scripts/employees.js"></script>
+    <script src="../scripts/shifts.js"></script>
+  </body>
+</html>
