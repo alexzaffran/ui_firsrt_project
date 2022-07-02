@@ -28,7 +28,7 @@ function createShiftsTable(allShifts) {
     endTime.innerHTML = item?.End_Time;
 
     const employees = document.createElement('td');
-    employeesLinkList = item?.Employees?.map((e) => {
+    const employeesLinkList = item?.Employees?.map((e) => {
       const link = document.createElement('a');
       link.innerHTML = `${e?.First_Name} ${e?.Last_Name}`;
       link.addEventListener('click', async function () {

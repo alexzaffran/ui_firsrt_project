@@ -23,4 +23,8 @@ async function load_page(pageName) {
   if (pageName === 'shifts') {
     executeShiftsScripts();
   }
+
+  if (pageName === 'employees') {
+    executeEmployeesScripts();
+  }
 }
