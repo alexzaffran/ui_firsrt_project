@@ -43,7 +43,7 @@ function createShiftsTable(allShifts) {
 
       if (index !== employeesLinkList?.length - 1) {
         const coma = document.createElement('span');
-        coma.innerText = ' ,';
+        coma.innerText = ', ';
         employees.appendChild(coma);
       }
     });

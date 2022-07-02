@@ -3,6 +3,11 @@ async function executeEmployeesScripts() {
     createEmployeesTable(allEmployees);
 }
 
+async function executeEmployeesResultScripts(employeesResult) {
+    createEmployeesResultTable(employeesResult);
+}
+
+
 
 function createEmployeesTable(allEmployees) {
     let tableBody = document.querySelector('.table-body');
@@ -41,7 +46,7 @@ function createEmployeesTable(allEmployees) {
 
             if (index !== shiftsSpanList?.length - 1) {
                 const coma = document.createElement('span');
-                coma.innerText = ' ,';
+                coma.innerText = ', ';
                 shifts.appendChild(coma);
             }
         });
@@ -98,7 +103,7 @@ async function getAllEmployees() {
     try {
         const requestConfig = {
             method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json'},
         };
 
         const url = 'https://localhost:44323/api/employee/GetAllEmployees';
@@ -111,14 +116,14 @@ async function getAllEmployees() {
     }
 }
 
-async function deleteOneEmployee(id) {
+async function searchAnEmployee(input) {
     try {
         const requestConfig = {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' },
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
         };
 
-        const url = `https://localhost:44323/api/employee/DeleteEmployee/${id}`;
+        const url = `https://localhost:44323/api/employee/SearchEmployee?input=${input}`;
 
         const response = await fetch(url, requestConfig);
         const result = await response.json();
@@ -126,4 +131,65 @@ async function deleteOneEmployee(id) {
     } catch (err) {
         console.log(err);
     }
+}
+
+async function handleSearchEmployeeButton() {
+    const input = document.querySelector('.search-input')
+    const employeesResult = await searchAnEmployee(input.value)
+    await load_page('employeeResult')
+    await executeEmployeesResultScripts(employeesResult);
+
+}
+
+
+function createEmployeesResultTable(allEmployees) {
+    let tableBody = document.querySelector('.table-body');
+    tableBody.remove();
+
+    tableBody = document.createElement('tbody');
+    tableBody?.classList?.add('table-body');
+    const table = document.querySelector('.table');
+    table.appendChild(tableBody);
+
+    allEmployees?.forEach((item) => {
+        const row = document.createElement('tr');
+
+        const id = document.createElement('td');
+        id.innerHTML = item?.Id;
+
+        const name = document.createElement('td');
+        name.innerHTML = `${item?.FirstName} ${item?.LastName}`;
+
+        const startWorkYear = document.createElement('td');
+        startWorkYear.innerHTML = item?.StartWorkYear;
+
+        const departmentName = document.createElement('td');
+        departmentName.innerHTML = item?.DepartmentName;
+
+        const shifts = document.createElement('td');
+        const shiftsSpanList = item?.ShiftList?.map((e) => {
+            const span = document.createElement('span');
+            span.innerHTML = `${convertDateToString(e?.Date)} ${e?.Start_Time}-${e?.End_Time}`;
+
+            return span;
+        });
+
+        shiftsSpanList.forEach((shiftSpan, index) => {
+            shifts.appendChild(shiftSpan);
+
+            if (index !== shiftsSpanList?.length - 1) {
+                const coma = document.createElement('span');
+                coma.innerText = ', ';
+                shifts.appendChild(coma);
+            }
+        });
+
+
+        row.appendChild(id);
+        row.appendChild(name);
+        row.appendChild(startWorkYear);
+        row.appendChild(departmentName);
+        row.appendChild(shifts);
+        tableBody.appendChild(row);
+    });
 }
